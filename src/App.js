@@ -1,21 +1,44 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState , useEffect} from 'react';
 import './App.css';
+import { PieChart, Pie, Sector, Cell} from 'recharts';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+
+function App() {
+  useEffect(() => { document.title = `Kontostand`; });
+
+
+  const [dailyMoney, setdailyMoney] = useState(85.36);
+  const defaultLook1 = {color: "white", fontFamily: 'Arial', display: 'flex', alignItems: 'center', justifyContent: 'center'};
+  const defaultLook2 = {color: "white", fontFamily: 'Arial'};
+  const zentrierungX = {display: 'inline-block'};
+  const [monthAvarge, setMonthAvarge] = useState(15.33)
+  const [monthCost, setMonthCost] = useState(10.67)
+  const [monthIncomm, setMonthIncomm] = useState(20)
+  const data01 = [
+    { name: 'Audgaben', value: 400, color:"red"},
+    { name: 'Einkommen', value: 300 , color:"red"},
+  ]
+
+  return (
+    <div className='App'>
+      <div className='up-area' style={{backgroundColor:"#1f1f1f", width:"100%", height:500}}>
+        <div style={{ position:"relative", top:100, ...zentrierungX}}>
+          <label style={{ background: "#3e3e3e", fontSize: "50px", color: "white", borderRadius: "50%", height:250, width: 250, ...defaultLook1 }}>{dailyMoney}€</label>
+          </div>
+          <label style={{fontSize: "25px", position: "relative", top:-80, left:"65%", backgroundColor:"#5e5e5e", width:300, borderRadius:"20px", ...defaultLook1}}>Ausgaben</label>
+        <div className="Small-Info" style={{ position: "relative", height: 100, width: 300, left: "65%", top: -70, backgroundColor: "#5e5e5e", borderRadius: "10px"}}>
+          <label style={{ fontSize: "25px", position: "relative", top: 10, left: 20, width: 100, height: 30, backgroundColor: "transperent", textAlign: "left", whiteSpace: "nowrap", ...defaultLook2 }}>Durchschnitt:  {monthAvarge}€</label>
+          <label style={{ fontSize: "25px", position: "relative", top: 60, left: -210, width: 100, height: 30, backgroundColor: "transperent", textAlign: "left", whiteSpace: "nowrap", ...defaultLook2 }}>Diesen Monat:  {monthCost}€</label>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+      <PieChart width={730} height={250}>
+        <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} innerRadius={80} fill="#8884d8" label/>
+      </PieChart>
       </div>
-    );
-  }
+    </div>
+    </div>
+  );
 }
+
 
 export default App;
