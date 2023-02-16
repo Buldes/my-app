@@ -10,7 +10,8 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "0.9.5",
-    "recharts": "^2.4.1"
+    "recharts": "^2.4.1",
+    "victory": "^36.6.8"
   },
   "scripts": {
     "predeploy": "npm run build",
