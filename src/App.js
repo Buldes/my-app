@@ -14,38 +14,34 @@ function App() {
   const [monthAvarge, setMonthAvarge] = useState(15.33)
   const [monthCost, setMonthCost] = useState(10.67)
   const [monthIncomm, setMonthIncomm] = useState(20)
-  const COLORS = ["#ff0000", "#00ff00"]
+
+  const exampleData = [{state: "Einkommen", date: {day: "02", month: "02", year: "2022"}, amount: "396.56", id: "1"},
+                        {state: "Ausgaben", date: {day: "02", month: "02", year: "2022"}, amount: "16 3.97", id: "2"}]
+
 
   function monthCostSet(event){
     setMonthCost(event.target.value)}
   function monthIncommSet(event){
     setMonthIncomm(event.target.value)}
 
+  function updateList(){
+    for (let i = 0; i <= exampleData.length - 1; i++){
+      console.log(exampleData[i].date.day)
+      {dailyListItem({state: exampleData[i].state, 
+                      date: (exampleData[i].date.day + "." + exampleData[i].date.month + "." + exampleData[i].date.year),
+                      amount: exampleData[i].amount})}
+    }
+  }
 
   function dailyListItem(props){
       return (
-      <div style={{height: 35, width: 600, borderRadius: "5px", backgroundColor: "#2e2e2e", display: 'flex', justifyContent: 'flex-start', ...defaultLook1}} >
-        <label style={{backgroundColor: props.state === 'Einkommen' ? '#2f9f1f' : '#ef2f2f', width:150, borderRadius: "3px", fontSize:"22px", textAlign: "middle", ...defaultLook2}}>{props.state}</label>
-        <label style={{backgroundColor: "#5e5e5e", width:180, borderRadius: "3px", fontSize:"22px", textAlign: "middle", position: "relative", left: 5, ...defaultLook2}}>{props.date}</label>
-        <label style={{backgroundColor: "#5e5e5e", width:200, borderRadius: "3px", fontSize:"22px", textAlign: "middle", position: "relative", left:10, ...defaultLook2}}>{props.amount} €  </label>
+      <div style={{margin: "5px 0", height: 35, width: 580, borderRadius: "5px", backgroundColor: "#2e2e2e", display: 'flex', position: "relative", top: props.y, left:props.x, display: "flex", alignItems: "center"}} >
+        <label style={{backgroundColor: props.state === 'Einkommen' ? '#2f9f1f' : '#ef2f2f', width:150, borderRadius: "3px", fontSize:"22px", position:"relative", left: 5, textAlign: "middle", ...defaultLook2}}>{props.state}</label>
+        <label style={{backgroundColor: "#5e5e5e", width:180, borderRadius: "3px", fontSize:"22px", textAlign: "middle", position: "relative", left: 10, ...defaultLook2}}>{props.date}</label>
+        <label style={{backgroundColor: "#5e5e5e", width:200, borderRadius: "3px", fontSize:"22px", textAlign: "middle", position: "relative", left:15, ...defaultLook2}}>{props.amount} €  </label>
+        <button style={{backgroundColor: "#ff1f1f", width: 25, height:25, borderRadius: "3px", position: "relative", left: 20, borderColor: "#ff1f1f"}}>X</button>
       </div>
   )}
-  
-
-
-class Counter extends React.Component { render() { 
-  return (
-    <div>
-      <button onClick={() => this.props.minus} className="Counter">+</button>
-      <button onClick={() => this.props.minus} className="Counter">-</button>
-    </div>
-    );
-  }
-}
-  
-class Count extends React.Component {constructor(props) { super(); this.state = {numb: Array(2).fill(0),};}
-}
-
 
 
 
@@ -80,18 +76,17 @@ class Count extends React.Component {constructor(props) { super(); this.state = 
               labels: {fontSize: 20, fill: "#ffffff"} ,transform: "flex"}}/>
         </div>
       <div className='down-arear' style={{backgroundColor: "#2f2f2f", width: "100%", height: 10000, top: -270, position: "relative", borderRadius: "25px"}}>
-            <div className='List' style={{display: "flex", backgroundColor: "red", position: "relative", width:500, height: 500, left:"12%", top:60, borderRadius: "10px"}}>
-              <label style={{backgroundColor: "#5e5e5e", width:400, height:35, borderRadius: "25px", fontSize:"22px", textAlign: "middle", position: "relative", top: 10, ...defaultLook1}}>Ausgaben und Einkommen</label>
-              </div>  
+            <div className='List' style={{display: "flex", justifyContent: "flex-start", backgroundColor: "#3e3e3e", position: "relative", width:650, height: 600, left:"12%", top:60, borderRadius: "10px"}}>
+              <div>
+                <label style={{backgroundColor: "#5e5e5e", width:500, height:35, borderRadius: "25px", fontSize:"22px", textAlign: "middle", position: "relative", top: 10, left: 75, ...defaultLook1}}>Ausgaben und Einkommen</label>
+              </div>
+            <div>
+              <div style={{display: 'flex', flexDirection: "column", justifyContent: "flex-start", backgroundColor: "#4e4e4e", border: "3px solid black", width: 590, height: 500, position: "relative", top: 50, left: -475,  borderRadius:"10px"}}>
+                {updateList()}
+              </div>
+              </div>
+            </div>  
       </div>
-     </div>
-
-
-
-
-     
-     <div>
-      
      </div>
 
     </div>
