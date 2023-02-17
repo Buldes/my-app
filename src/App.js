@@ -37,7 +37,7 @@ function App() {
   function manuelAddData(){
     const dropBox = document.getElementById("ListDropBox")
     const dropBoxValue = dropBox.options[dropBox.selectedIndex].value
-    ddData({newState:{dropBoxValue}, newDay:{}, newMonth:{}, newYear:{}, newAmount:{}})  //required date and input amout
+    addData({newState:{dropBoxValue}, newDay:{}, newMonth:{}, newYear:{}, newAmount:{}})  //required date and input amout
   }
 
   function updateList(){
