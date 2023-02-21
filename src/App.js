@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from 'react';
 import './App.css';
 import { VictoryPie } from 'victory'
-import { AddButton } from './Buttons/variousButtons';
+import { AddButton, DeleteButton } from './Buttons/variousButtons';
 import { defaultTextSytle , centeringX} from './Styles/TextStyles.js';
 import { centering } from './Styles/Look.js';
 
@@ -59,7 +59,7 @@ function App() {
         <label style={{backgroundColor: props.the_state === 'Einkommen' ? '#2f9f1f' : '#ef2f2f', width:150, borderRadius: "3px", fontSize:"22px", position:"relative", left: 5, textAlign: "middle", ...defaultTextSytle}}>{props.the_state}</label>
         <label style={{backgroundColor: "#5e5e5e", id: props.the_id, width:180, borderRadius: "3px", fontSize:"22px", textAlign: "middle", position: "relative", left: 10, ...defaultTextSytle}}>{props.the_date}</label>
         <label style={{backgroundColor: "#5e5e5e", id: props.the_id, width:200, borderRadius: "3px", fontSize:"22px", textAlign: "middle", position: "relative", left:15, ...defaultTextSytle}}>{props.the_amount} €  </label>
-        <button style={{backgroundColor: "#ff1f1f", id: props.the_id, width: 25, height:25, borderRadius: "3px", position: "relative", left: 20, borderColor: "#ff1f1f"}}>X</button>
+        <DeleteButton left="20px"/>
       </div>)}
 
   function dropBoxColor(event){

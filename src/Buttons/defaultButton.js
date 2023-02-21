@@ -3,7 +3,7 @@ import { defaultTextSytle } from "../Styles/TextStyles.js";
 
 export function DefaultButton(props){
 
-    const styleTypB = Object.assign({}, props.add, defaultTextSytle)
+    const styleTypB = Object.assign({},  defaultTextSytle, props.add)
 
     return <button onClick={props.click} style={{
                     backgroundColor: props.color, borderColor: props.color, borderRadius:props.borderRadius,

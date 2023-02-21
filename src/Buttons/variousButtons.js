@@ -8,6 +8,5 @@ export function AddButton(props){
 } 
 
 export function DeleteButton(props){
-
-    <DefaultButton name="X" color="#ff1f1f" borderRadius="3px" width="25px" height="25px" top={props.top} left={props.left} id={props.id}/>
+    return <DefaultButton name="X" color="#ff1f1f" borderRadius="3px" width="25px" height="25px" top={props.top} left={props.left} id={props.id} add={Object.assign({}, centering,  {color:"black"})}/>
 }
