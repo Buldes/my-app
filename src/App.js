@@ -4,6 +4,10 @@ import { VictoryPie } from 'victory'
 import { AddButton, DeleteButton } from './Buttons/variousButtons';
 import { defaultTextSytle , centeringX} from './Styles/TextStyles.js';
 import { centering } from './Styles/Look.js';
+import { Headline } from './Lable/HeadLines';
+import { BankBalanceLable } from './Lable/bankBalanceLable';
+import { TextLable } from './Lable/textLable';
+import { ListLable } from './Lable/listLable';
 
 function App() {
   useEffect(() => { document.title = `Kontostand`; });
@@ -56,9 +60,9 @@ function App() {
   function dailyListItem(props){
       return (
       <div key={props.key} style={{margin: "5px 0", height: 35, width: 580, borderRadius: "5px", backgroundColor: "#2e2e2e", display: 'flex', position: "relative", top: props.y, left:props.x, alignItems: "center"}} >
-        <label style={{backgroundColor: props.the_state === 'Einkommen' ? '#2f9f1f' : '#ef2f2f', width:150, borderRadius: "3px", fontSize:"22px", position:"relative", left: 5, textAlign: "middle", ...defaultTextSytle}}>{props.the_state}</label>
-        <label style={{backgroundColor: "#5e5e5e", id: props.the_id, width:180, borderRadius: "3px", fontSize:"22px", textAlign: "middle", position: "relative", left: 10, ...defaultTextSytle}}>{props.the_date}</label>
-        <label style={{backgroundColor: "#5e5e5e", id: props.the_id, width:200, borderRadius: "3px", fontSize:"22px", textAlign: "middle", position: "relative", left:15, ...defaultTextSytle}}>{props.the_amount} €  </label>
+        <ListLable text={props.the_state} id={props.the_id} width="150px" left="5px"/>
+        <ListLable text={props.the_date} id={props.the_id} width="180px" left="10px"/>
+        <ListLable text={props.the_amount + "€"} id={props.the_id} width="200px" left="15px"/>
         <DeleteButton left="20px"/>
       </div>)}
 
@@ -80,17 +84,16 @@ function App() {
       <div className='up-area' style={{backgroundColor:"#1f1f1f", width:"calc(100% - 10px)", height:500, borderRadius: "25px", position: "relative", top: 5, margin: "0 5px"}}>
 
         <div style={{ position:"relative", top:100, ...centeringX}}>
-          <label style={{ background: "#3e3e3e", fontSize: "60px", color: "white", borderRadius: "50%", height:300, width: 300, ...centering}}>{dailyMoney}€</label>
-          </div>
-          <label style={{fontSize: "25px", position: "relative", top:-110, left:"65%", backgroundColor:"#5e5e5e", width:300, borderRadius:"20px", ...centering}}>Ausgaben</label>
-        
+          <BankBalanceLable text={dailyMoney}/>
+        </div>
+          <Headline text="Ausgaben" top="-110px" left="65%" width="300px"/>
         <div className="Small-Info" style={{ position: "relative", height: 100, width: 300, left: "65%", top: -100, backgroundColor: "#5e5e5e", borderRadius: "10px"}}>
-          <label style={{ fontSize: "25px", position: "relative", top: 10, left: 20, width: 100, height: 30, backgroundColor: "transperent", textAlign: "left", whiteSpace: "nowrap", ...defaultTextSytle }}>Durchschnitt:  {monthAvarge}€</label>
-          <label style={{ fontSize: "25px", position: "relative", top: 60, left: -210, width: 100, height: 30, backgroundColor: "transperent", textAlign: "left", whiteSpace: "nowrap", ...defaultTextSytle }}>Diesen Monat:  {monthCost}€</label>
+          <TextLable top="15px" left="20px" width="100px" backgroundColor="transperent" text={"Durchschnitt: " + monthAvarge + "€"}  add={{whiteSpace:"nowrap", transform: "flex"}}/>
+          <TextLable top="30px" left="20px" width="100px" backgroundColor="transperent" text={"Diesen Monat: " + monthCost + "€"}  add={{whiteSpace:"nowrap", transform: "flex"}}/>
         </div>
         <div className='Pi Chart' style={{backgroundColor:"#2e2e2e", position: "relative", top:-340, left:"10%", transform: "flex", width:500, height: 350, borderRadius: "25px"}}>
           <div>
-            <label style={{fontSize: "22px", width: 300, height: 32, backgroundColor: "#5e5e5e", position: "relative", left:"20%", top: 10, borderRadius: "22px", ...centering}}>Diesen Monat</label>
+            <Headline width="300px" left="20%" top="10px" text="Diesen Monat"/>
           </div>
           <VictoryPie
             data={[
@@ -107,7 +110,7 @@ function App() {
       <div className='down-arear' style={{backgroundColor: "#2f2f2f", width: "100%", height: 10000, top: -270, position: "relative", borderRadius: "25px"}}>
             <div className='List' style={{display: "flex", justifyContent: "flex-start", backgroundColor: "#3e3e3e", position: "relative", width:650, height: 600, left:"6%", top:60, borderRadius: "10px"}}>
               <div>
-                <label style={{backgroundColor: "#5e5e5e", width:500, height:35, borderRadius: "25px", fontSize:"22px", textAlign: "middle", position: "relative", top: 10, left: 75, ...centering}}>Ausgaben und Einkommen</label>
+                <Headline text="Ausgaben und Einkommen" width="500px" top="10px" left="75px"/>
               </div>
             <div>
               <div style={{display: 'flex', flexDirection: "column", justifyContent: "flex-start", backgroundColor: "#4e4e4e", border: "3px solid #1f1f1f", width: 590, height: 500, position: "relative", top: 50, left: -475,  borderRadius:"10px"}}>

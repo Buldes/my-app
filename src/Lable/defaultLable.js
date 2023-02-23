@@ -3,7 +3,7 @@ import { defaultTextSytle } from "../Styles/TextStyles";
 
 export function DefaultLable(props){
 
-    const styleTypL = Object.assign({}, props.add, defaultTextSytle)
+    const styleTypL = Object.assign({}, defaultTextSytle, props.add)
 
     return <label style={{
         width:props.width, height:props.height,
@@ -11,5 +11,7 @@ export function DefaultLable(props){
         borderRadius:props.borderRadius, border:props.border, 
         fontSize:props.fontSize,
         backgroundColor:props.color,
-        display:"flex", ...styleTypL}} >props.text</label>
+        textAlign:props.textAlign,
+        id:props.id,
+        display:"flex", ...styleTypL}} >{props.text}</label>
 }
