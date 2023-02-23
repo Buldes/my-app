@@ -9,6 +9,10 @@ import { MonthlyPieChart } from './Charts/monthlyPieChart';
 import { bgColor1f, bgColor2e, bgColor3e, bgColor4e, bgColor5e, bgColorGreen, bgColorR1 } from './Styles/backGroundColor';
 import { DeleteButton } from './Buttons/deletButton';
 import { AddButton } from './Buttons/addButton';
+import { DefaultInputField } from './InputField/defaultInputField';
+import { AmoutInput } from './InputField/amoutInputField';
+import { DefaultDropBox } from './DropBox/defaultDropBox';
+import { StatusDropBox } from './DropBox/statusDropBox';
 
 function App() {
   useEffect(() => { document.title = `Kontostand`; });
@@ -112,8 +116,8 @@ function App() {
                   <option value="Ausgaben">Ausgaben </option>
                 </select>
               <div>
-                <input value={inputAmout} onChange={getInputAmout} style={{backgroundColor: bgColor5e, borderColor: "#000000", border: "3px solid #000000", borderRadius: "10px", width: 395, height: 30, fontSize: "20px", position:"relative", top: 18, left: -425, ...defaultTextSytle}}></input>
-              </div>
+                <AmoutInput value={inputAmout} onChange={getInputAmout} width="395px" top="18px" left="-425px"/>
+                </div>
               <div>
                 <AddButton top="-18px" left="80px" click={manuelAddData}/>
               </div>
