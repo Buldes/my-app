@@ -3,5 +3,7 @@ import { bgColorGreen, bgColorR2 } from "../Styles/backGroundColor";
 import { DefaultPieChart } from "./defaultPieChart";
 
 export function MonthlyPieChart(props){
-    return <DefaultPieChart data={props.data} innerRadius={80} cornerRadius={10} colors={[bgColorR2, bgColorGreen]} transperents={1} borderColor="#2e2e2e" borderWidth={3}/>
+    const {colors=[bgColorR2, bgColorGreen], borderColor="#2e2e2e", borderWidth=3, innerRadius=80} = props 
+
+    return <DefaultPieChart data={props.data} innerRadius={innerRadius} cornerRadius={10} colors={colors} transperents={1} borderColor={borderColor} borderWidth={borderWidth}/>
 }

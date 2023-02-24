@@ -1,18 +1,15 @@
 import React, { useState , useEffect} from 'react';
 import './App.css';
-import { defaultTextSytle , centeringX} from './Styles/TextStyles.js';
 import { Headline } from './Lable/HeadLines';
 import { BankBalanceLable } from './Lable/bankBalanceLable';
-import { TextLable } from './Lable/textLable';
 import { ListLable } from './Lable/listLable';
-import { MonthlyPieChart } from './Charts/monthlyPieChart';
 import { bgColor1f, bgColor2e, bgColor3e, bgColor4e, bgColor5e, bgColorGreen, bgColorR1 } from './Styles/backGroundColor';
 import { DeleteButton } from './Buttons/deletButton';
 import { AddButton } from './Buttons/addButton';
-import { DefaultInputField } from './InputField/defaultInputField';
 import { AmoutInput } from './InputField/amoutInputField';
-import { DefaultDropBox } from './DropBox/defaultDropBox';
 import { StatusDropBox } from './DropBox/statusDropBox';
+import { PieChartComponent } from './Components/defaultPieChartComponent';
+import { SmallInfoComponent } from './Components/smallInfoComponent';
 
 function App() {
   useEffect(() => { document.title = `Kontostand`; });
@@ -88,20 +85,12 @@ function App() {
     <div className='App'>
       <div className='up-area' style={{backgroundColor:bgColor1f, width:"calc(100% - 10px)", height:500, borderRadius: "25px", position: "relative", top: 5, margin: "0 5px"}}>
 
-        <div style={{ position:"relative", top:100, ...centeringX}}>
-          <BankBalanceLable text={dailyMoney}/>
-        </div>
-          <Headline text="Ausgaben" top="-110px" left="65%" width="300px"/>
-        <div className="Small-Info" style={{ position: "relative", height: 100, width: 300, left: "65%", top: -100, backgroundColor: bgColor5e, borderRadius: "10px"}}>
-          <TextLable top="15px" left="20px" width="100px" text={"Durchschnitt: " + monthAvarge + "€"}  add={{whiteSpace:"nowrap", transform: "flex"}}/>
-          <TextLable top="30px" left="20px" width="100px" text={"Diesen Monat: " + monthCost + "€"}  add={{whiteSpace:"nowrap", transform: "flex"}}/>
-        </div>
-        <div className='Pi Chart' style={{position: "relative", top:-340, left:"10%", transform: "flex", width:500, height: 350, borderRadius: "25px", backgroundColor: bgColor2e}}>
-          <div>
-            <Headline width="300px" left="20%" top="10px" text="Diesen Monat"/>
-          </div>
-          <MonthlyPieChart data={[{x: "Ausgaben", y: parseFloat(monthCost)}, {x: "Einkommen", y: parseFloat(monthIncomm)}]}/>
-        </div>
+        <BankBalanceLable text={dailyMoney}/>
+
+        <SmallInfoComponent/>
+
+        <PieChartComponent cost={monthCost} incomm={monthIncomm} top="-340px" left="10%"/>
+
       <div className='down-arear' style={{backgroundColor: bgColor2e, width: "100%", height: 10000, top: -270, position: "relative", borderRadius: "25px"}}>
             <div className='List' style={{display: "flex", justifyContent: "flex-start", backgroundColor: bgColor3e, position: "relative", width:650, height: 600, left:"6%", top:60, borderRadius: "10px"}}>
               <div>
@@ -111,10 +100,7 @@ function App() {
               <div style={{display: 'flex', flexDirection: "column", justifyContent: "flex-start", backgroundColor: bgColor4e, border: "3px solid #1f1f1f", width: 590, height: 500, position: "relative", top: 50, left: -475,  borderRadius:"10px"}}>
                  {updateList()}
               </div>
-                <select  onChange={dropBoxColor} id="ListDropBox" style={{backgroundColor: "#2f9f1f", borderColor: "#2f9f1f", borderRadius: "10px", width: 140, height: 35, fontSize: "20px", position:"relative", top: 54, left: -700, ...defaultTextSytle}}>
-                  <option value="Einkommen">Einkommen</option>
-                  <option value="Ausgaben">Ausgaben </option>
-                </select>
+                <StatusDropBox onChange={dropBoxColor} id="ListDropBox" top="54px" left="-700px"/>
               <div>
                 <AmoutInput value={inputAmout} onChange={getInputAmout} width="395px" top="18px" left="-425px"/>
                 </div>
