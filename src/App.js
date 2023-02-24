@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react';
+import React, { useEffect} from 'react';
 import './App.css';
 import { BankBalanceLable } from './Lable/bankBalanceLable';
 import { bgColorGreen, bgColorR1 } from './Styles/backGroundColor';
@@ -7,19 +7,13 @@ import { SmallInfoComponent } from './Components/smallInfoComponent';
 import { CostIncommListComponent } from './Components/cost-incommListComponent';
 import { downArearStyle, upArearStyle } from './Styles/arearStyles';
 import { CostIncommListItem } from './Components/costIncomListItem';
+import { exampleData } from './Data/list';
+import { monthAvarge, monthCost, monthIncomm, dailyMoney } from './Data/float';
 
 function App() {
   useEffect(() => { document.title = `Kontostand`; });
 
-  const [dailyMoney, setdailyMoney] = useState(85.36);
-  const [monthAvarge, setMonthAvarge] = useState(15.33)
-  const [monthCost, setMonthCost] = useState(10.67)
-  const [monthIncomm, setMonthIncomm] = useState(20)
-  var inputAmout;
-
-  var exampleData = [{id: 0, state: "Einkommen", date: {day: "02", month: "02", year: "2022"}, amount: "2396.56"},
-                    {id: 1, state: "Ausgaben", date: {day: "03", month: "02", year: "2022"}, amount: "163.97"}, 
-                    {id: 2, state: "Ausgaben", date: {day: "04", month: "02", year: "2022"}, amount: "16.97"}]
+  var inputAmout
 
   function addData(props){
     var newData = {id: (exampleData.length), state:props.newState, 
@@ -43,6 +37,7 @@ function App() {
   }
 
   const getInputAmout  = (event) =>{
+    
     inputAmout = event.target.value
   }
 
@@ -56,7 +51,7 @@ function App() {
     return listItem
   }
 
-  const handleClick = () => {
+  const dropBoxColor = () => {
     const select = document.getElementById("ListDropBox")
     const selectedValue = select.options[select.selectedIndex].value;
     if (selectedValue === "Einkommen"){
@@ -81,7 +76,7 @@ function App() {
      </div>
 
       <div className='down-arear' style={downArearStyle}>
-          <CostIncommListComponent generateList={addList()} inputValue={inputAmout} dropBoxColorChange={handleClick} getInput={getInputAmout} addButtonClick={manuelAddData}/> 
+          <CostIncommListComponent generateList={addList()} inputValue={inputAmout} dropBoxColorChange={dropBoxColor} getInput={getInputAmout} addButtonClick={manuelAddData}/> 
       </div>
 
     </div>
