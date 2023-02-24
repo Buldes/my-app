@@ -10,6 +10,8 @@ import { AmoutInput } from './InputField/amoutInputField';
 import { StatusDropBox } from './DropBox/statusDropBox';
 import { PieChartComponent } from './Components/defaultPieChartComponent';
 import { SmallInfoComponent } from './Components/smallInfoComponent';
+import { CostIncommListComponent } from './Components/cost-incommListComponent';
+import { downArearStyle, upArearStyle } from './Styles/arearStyles';
 
 function App() {
   useEffect(() => { document.title = `Kontostand`; });
@@ -49,7 +51,7 @@ function App() {
     inputAmout = event.target.value
   }
 
-  function updateList(){
+  function addList(){
      let listItem = []
     for (let i = 0; i < exampleData.length; i++){
       listItem.push(dailyListItem({the_state: exampleData[i].state, 
@@ -83,34 +85,18 @@ function App() {
 
   return (
     <div className='App'>
-      <div className='up-area' style={{backgroundColor:bgColor1f, width:"calc(100% - 10px)", height:500, borderRadius: "25px", position: "relative", top: 5, margin: "0 5px"}}>
-
+      <div className='up-area' style={upArearStyle}>
         <BankBalanceLable text={dailyMoney}/>
 
-        <SmallInfoComponent/>
+        <SmallInfoComponent cost={monthCost} avarge={monthAvarge}/>
 
         <PieChartComponent cost={monthCost} incomm={monthIncomm} top="-340px" left="10%"/>
-
-      <div className='down-arear' style={{backgroundColor: bgColor2e, width: "100%", height: 10000, top: -270, position: "relative", borderRadius: "25px"}}>
-            <div className='List' style={{display: "flex", justifyContent: "flex-start", backgroundColor: bgColor3e, position: "relative", width:650, height: 600, left:"6%", top:60, borderRadius: "10px"}}>
-              <div>
-                <Headline text="Ausgaben und Einkommen" width="500px" top="10px" left="75px"/>
-              </div>
-            <div>
-              <div style={{display: 'flex', flexDirection: "column", justifyContent: "flex-start", backgroundColor: bgColor4e, border: "3px solid #1f1f1f", width: 590, height: 500, position: "relative", top: 50, left: -475,  borderRadius:"10px"}}>
-                 {updateList()}
-              </div>
-                <StatusDropBox onChange={dropBoxColor} id="ListDropBox" top="54px" left="-700px"/>
-              <div>
-                <AmoutInput value={inputAmout} onChange={getInputAmout} width="395px" top="18px" left="-425px"/>
-                </div>
-              <div>
-                <AddButton top="-18px" left="80px" click={manuelAddData}/>
-              </div>
-            </div>
-          </div>  
-      </div>
+        
      </div>
+
+      <div className='down-arear' style={downArearStyle}>
+          <CostIncommListComponent generateList={addList()}/> 
+      </div>
 
     </div>
   );
