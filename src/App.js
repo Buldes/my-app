@@ -1,17 +1,12 @@
 import React, { useState , useEffect} from 'react';
 import './App.css';
-import { Headline } from './Lable/HeadLines';
 import { BankBalanceLable } from './Lable/bankBalanceLable';
-import { ListLable } from './Lable/listLable';
-import { bgColor1f, bgColor2e, bgColor3e, bgColor4e, bgColor5e, bgColorGreen, bgColorR1 } from './Styles/backGroundColor';
-import { DeleteButton } from './Buttons/deletButton';
-import { AddButton } from './Buttons/addButton';
-import { AmoutInput } from './InputField/amoutInputField';
-import { StatusDropBox } from './DropBox/statusDropBox';
+import { bgColorGreen, bgColorR1 } from './Styles/backGroundColor';
 import { PieChartComponent } from './Components/defaultPieChartComponent';
 import { SmallInfoComponent } from './Components/smallInfoComponent';
 import { CostIncommListComponent } from './Components/cost-incommListComponent';
 import { downArearStyle, upArearStyle } from './Styles/arearStyles';
+import { CostIncommListItem } from './Components/costIncomListItem';
 
 function App() {
   useEffect(() => { document.title = `Kontostand`; });
@@ -33,7 +28,7 @@ function App() {
     console.log("Added New Data.")
   }
 
-  function manuelAddData(){
+  const manuelAddData = () => {
     const dropBox = document.getElementById("ListDropBox")
     const dropBoxValue = dropBox.options[dropBox.selectedIndex].value
     const amoutInput = parseFloat(inputAmout)
@@ -47,30 +42,21 @@ function App() {
     } 
   }
 
-  function getInputAmout(event){
+  const getInputAmout  = (event) =>{
     inputAmout = event.target.value
   }
 
   function addList(){
      let listItem = []
     for (let i = 0; i < exampleData.length; i++){
-      listItem.push(dailyListItem({the_state: exampleData[i].state, 
+      listItem.push(CostIncommListItem({the_state: exampleData[i].state, 
                     the_date: (exampleData[i].date.day + "." + exampleData[i].date.month + "." + exampleData[i].date.year),
                     the_amount: exampleData[i].amount, x: 5, the_id:exampleData[i].id, 
                     key: exampleData[i].id}))}
     return listItem
   }
 
-  function dailyListItem(props){
-      return (
-      <div key={props.key} style={{margin: "5px 0", height: 35, width: 580, borderRadius: "5px", backgroundColor:bgColor2e, display: 'flex', position: "relative", top: props.y, left:props.x, alignItems: "center"}} >
-        <ListLable text={props.the_state} id={props.the_id} width="150px" left="5px"/>
-        <ListLable text={props.the_date} id={props.the_id} width="180px" left="10px"/>
-        <ListLable text={props.the_amount + "€"} id={props.the_id} width="200px" left="15px"/>
-        <DeleteButton left="20px"/>
-      </div>)}
-
-  function dropBoxColor(event){
+  const handleClick = () => {
     const select = document.getElementById("ListDropBox")
     const selectedValue = select.options[select.selectedIndex].value;
     if (selectedValue === "Einkommen"){
@@ -80,8 +66,8 @@ function App() {
     else{
       select.style.backgroundColor = bgColorR1
       select.style.borderColor = bgColorR1
-    }}
-  
+    }
+  }
 
   return (
     <div className='App'>
@@ -91,11 +77,11 @@ function App() {
         <SmallInfoComponent cost={monthCost} avarge={monthAvarge}/>
 
         <PieChartComponent cost={monthCost} incomm={monthIncomm} top="-340px" left="10%"/>
-        
+
      </div>
 
       <div className='down-arear' style={downArearStyle}>
-          <CostIncommListComponent generateList={addList()}/> 
+          <CostIncommListComponent generateList={addList()} inputValue={inputAmout} dropBoxColorChange={handleClick} getInput={getInputAmout} addButtonClick={manuelAddData}/> 
       </div>
 
     </div>
