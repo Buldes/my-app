@@ -10,7 +10,7 @@ export function GenerateCostIncomList(){
                                           date={exampleData[i].date.day + "." + exampleData[i].date.month + "." + exampleData[i].date.year}
                                           amount={exampleData[i].amount} id={exampleData[i].id} x={5}/></li>)
     }
-    return (listItem)
+    return (<ul> listItem </ul>)
 }
 
 
