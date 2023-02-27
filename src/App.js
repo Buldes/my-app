@@ -9,6 +9,7 @@ import { downArearStyle, upArearStyle } from './Styles/arearStyles';
 import { exampleData } from './Data/list';
 import { monthAvarge, monthCost, monthIncomm, dailyMoney } from './Data/float';
 import { GenerateCIL } from './Functions/generateCILItem';
+import { UpdateCIL } from './Functions/updateCIL';
 
 function App() {
   useEffect(() => { document.title = `Kontostand`; });
@@ -17,38 +18,33 @@ function App() {
 
   function addData(props){
     var newData = {id: (exampleData.length), state:props.newState, 
-                  date: {day: props.newDay, month: props.newMonth, year: props.newYear}, amount: props.newAmount}
+                  date: {day: props.newDay, month: props.newMonth, year: props.newYear}, amount: props.newAmount, amoutStr: props.amoutStr}
     exampleData.push(newData)
     console.log("Added New Data.")
+    UpdateCIL()
   }
 
   const manuelAddData = () => {
-    const dropBox = document.getElementById("ListDropBox")
-    const dropBoxValue = dropBox.options[dropBox.selectedIndex].value
-    const amoutInput = parseFloat(inputAmout)
+    const select = document.getElementById("ListDropBox")
+    const selectedValue = select.options[select.selectedIndex].value;
+    const amoutInput = parseFloat(inputAmout).toFixed(2)
+    const currentDate = new Date();
 
     if (isNaN(amoutInput)){
       console.log('[Ein Fehler ist aufgetreten:] Es wurde keine Zahl eingegeben');
     }
+    else if (amoutInput.length > 13)
+    {
+      console.log("Warnung: Zahl zu groß")
+    }
     else{
-      console.log("Perfekt!")
-      addData({newState:{dropBoxValue}, newDay:{}, newMonth:{}, newYear:{}, newAmount:{amoutInput}})
+      addData({newState:selectedValue, newDay:currentDate.getDate(), newMonth:currentDate.getMonth() + 1, newYear:currentDate.getFullYear(), newAmount:amoutInput})
     } 
   }
 
   const getInputAmout  = (event) =>{
     
     inputAmout = event.target.value
-  }
-
-  function addList(){
-     let listItem = []
-    for (let i = 0; i < exampleData.length; i++){
-      listItem.push(CostIncommListItem({the_state: exampleData[i].state, 
-                    the_date: (exampleData[i].date.day + "." + exampleData[i].date.month + "." + exampleData[i].date.year),
-                    the_amount: exampleData[i].amount, x: 5, the_id:exampleData[i].id, 
-                    key: exampleData[i].id}))}
-    return listItem
   }
 
   const dropBoxColor = () => {
@@ -67,6 +63,7 @@ function App() {
   return (
     <div className='App'>
       <div className='up-area' style={upArearStyle}>
+
         <BankBalanceLable text={dailyMoney}/>
 
         <SmallInfoComponent cost={monthCost} avarge={monthAvarge}/>
@@ -82,6 +79,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
