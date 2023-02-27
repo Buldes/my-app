@@ -3,7 +3,7 @@ import { bgColor2e } from "../Styles/backGroundColor";
 import { ListLable } from "../Lable/listLable";
 import { DeleteButton } from "../Buttons/deletButton";
 
-export function CostIncommListItem(props){
+export function CILItem(props){
     return (
         <div style={{margin: "5px 0", height: 35, width: 580, borderRadius: "5px", backgroundColor:bgColor2e, display: 'flex', position: "relative", top: props.y, left:props.x, alignItems: "center"}} >
           

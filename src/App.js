@@ -4,12 +4,11 @@ import { BankBalanceLable } from './Lable/bankBalanceLable';
 import { bgColorGreen, bgColorR1 } from './Styles/backGroundColor';
 import { PieChartComponent } from './Components/defaultPieChartComponent';
 import { SmallInfoComponent } from './Components/smallInfoComponent';
-import { CostIncommListComponent } from './Components/cost-incommListComponent';
+import { CILComponent } from './Components/cost-incommListComponent';
 import { downArearStyle, upArearStyle } from './Styles/arearStyles';
-import { CostIncommListItem } from './Components/costIncomListItem';
 import { exampleData } from './Data/list';
 import { monthAvarge, monthCost, monthIncomm, dailyMoney } from './Data/float';
-import { GenerateCostIncomList } from './Functions/generateListItem';
+import { GenerateCIL } from './Functions/generateCILItem';
 
 function App() {
   useEffect(() => { document.title = `Kontostand`; });
@@ -77,7 +76,7 @@ function App() {
      </div>
 
       <div className='down-arear' style={downArearStyle}>
-          <CostIncommListComponent generateList={GenerateCostIncomList()} inputValue={inputAmout} dropBoxColorChange={dropBoxColor} getInput={getInputAmout} addButtonClick={manuelAddData}/> 
+          <CILComponent generateList={GenerateCIL()} inputValue={inputAmout} dropBoxColorChange={dropBoxColor} getInput={getInputAmout} addButtonClick={manuelAddData}/> 
       </div>
 
     </div>
