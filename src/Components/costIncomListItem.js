@@ -7,7 +7,7 @@ export function CILItem(props){
     var textAmout = parseFloat(props.amount).toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2, style: 'currency', currency: 'EUR'})
 
     return (
-        <div style={{margin: "5px 0", height: 35, width: 580, borderRadius: "5px", backgroundColor:bgColor2e, display: 'flex', position: "relative", top: props.y, left:props.x, alignItems: "center"}} >
+        <div style={{margin: "5px -65px", height: 35, width: 580, borderRadius: "5px", backgroundColor:bgColor2e, display: 'flex', position: "relative", top: props.y, left:props.x, alignItems: "center", direction:"ltr"}} >
           
           <ListLable text={props.state} id={props.id} width="150px" left="5px"/>
 
