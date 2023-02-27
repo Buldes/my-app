@@ -14,5 +14,5 @@ export function GenerateCostIncomList(){
 }
 
 
-//Hier: (Funktion bereits getestet und erfolgreich eingebaut.) die entstandende liste von exampledata abhängig machen
-//In App.js: alle funktionen ein script geben
+Hier: (Funktion bereits getestet und erfolgreich eingebaut.) die entstandende liste von exampledata abhängig machen
+In App.js: alle funktionen ein script geben
