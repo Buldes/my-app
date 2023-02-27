@@ -8,12 +8,14 @@ import { downArearStyle, upArearStyle } from './Styles/arearStyles';
 import { monthAvarge, monthCost, monthIncomm, dailyMoney } from './Data/float';
 import { GenerateCIL } from './Functions/generateCILItem';
 import { CILAddBar } from './Components/CILaddKomponent';
+import { CILSortBar } from './Components/CILSortComponent';
 
 function App() {
   useEffect(() => { document.title = `Kontostand`; });
 
   return (
     <div className='App'>
+
       <div className='up-area' style={upArearStyle}>
 
         <BankBalanceLable text={dailyMoney}/>
@@ -25,7 +27,7 @@ function App() {
      </div>
 
       <div className='down-arear' style={downArearStyle}>
-          <CILComponent addBar={CILAddBar()} generateList={GenerateCIL()}/> 
+          <CILComponent addBar={CILAddBar()} generateList={GenerateCIL()} sortBar={CILSortBar()}/> 
       </div>
 
     </div>

@@ -9,7 +9,6 @@ export function UpdateCIL(){
 
     var cILReference = document.getElementById("CostIncomList")
 
-    console.log("TestTest123")
 
     listItem.forEach((item) => {
         const el = document.createElement('div');
