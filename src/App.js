@@ -26,7 +26,7 @@ function App() {
 
         <SmallInfoComponent cost={monthCost} avarge={monthCostAvarge}/>
 
-        <PieChartComponent cost={monthCost} incomm={monthIncomm} top="-340px" left="10%"/>
+        <PieChartComponent cost={parseFloat(monthCost)} incomm={monthIncomm} top="-340px" left="10%"/>
 
      </div>
      <button onClick={GenerateData}>Generate New Random Data</button>
