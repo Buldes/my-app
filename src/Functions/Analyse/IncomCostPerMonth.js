@@ -23,4 +23,17 @@ export function IncomCostMonthlyGenerate(){
 
         incomCostMonthly[i].push(totalCost, totalIncom)
     }
+
+    var totalCost = {amount:0, count:0}
+    var totalIncom = {amount:0, count:0}
+
+    for (let a = 0; a != yearMonthData.current.length; a++){
+        if (yearMonthData.current[a].state === "Einkommen"){
+            totalIncom = {amount: totalIncom.amount + parseFloat(yearMonthData.current[a].amount), count: totalIncom.count + 1}
+        }
+        else{
+            totalCost = {amount: totalCost.amount + parseFloat(yearMonthData.current[a].amount), count: totalCost.count + 1}
+        }
+    }
+    incomCostMonthly.current.push(totalCost, totalIncom)
 }

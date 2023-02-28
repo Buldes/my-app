@@ -1,5 +1,18 @@
+export var dailyMoney = 0
+export var monthCostAvarge = 0
+export var monthIncommAvarge = 0
+export var monthCost = 0
+export var monthIncomm = 0
 
-export var dailyMoney = 85.36
-export var monthAvarge = 15.33
-export var monthCost = 10.67
-export var monthIncomm = 20
+
+export const setMonthCostAverage = (value) => {
+    monthCostAvarge = value;
+};
+
+export const setMonthIncommAverage = (value) => {
+    monthIncommAvarge = value;
+};
+
+export const setMonthCost = (value) => {
+    monthCost = value;
+};

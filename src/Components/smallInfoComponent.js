@@ -11,13 +11,9 @@ export function SmallInfoComponent(props){
         <div style={{position:"relative"}}>
             <Headline text={headLine} top={componentY} left={componentX} width={componentWidth}/>
             <div style={{position:"relative", height:lableHight, width:componentWidth, left:componentX, top:(componentY+10), backgroundColor:bgColor, borderRadius:borderRadius}}>
-                <TextLable top={textLableTop} left={textLableLeft} text={lable1Text} add={{whiteSpace:"nowrap", transform: "flex"}}/>
-                <TextLable top={textLableTop*2} left={textLableLeft} text={lable2Text} add={{whiteSpace:"nowrap", transform: "flex"}}/>
+                <TextLable id="MonthCostAvarge" top={textLableTop} left={textLableLeft} text={lable1Text} add={{whiteSpace:"nowrap", transform: "flex"}}/>
+                <TextLable id="MonthCost" top={textLableTop*2} left={textLableLeft} text={lable2Text} add={{whiteSpace:"nowrap", transform: "flex"}}/>
             </div>
         </div>
     )
 }
-
-/*
-position: "relative", height: 100, width: 300, left: "65%", top: -100, backgroundColor: bgColor5e, borderRadius: "10px"}
-*/
