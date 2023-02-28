@@ -1,6 +1,6 @@
 import { exampleData } from "../../Data/list"
 
-export var yearMonthData = []
+export var yearMonthData = {1:[], 2:[], 3:[], 4:[], 5:[], 6:[], 7:[], 8:[], 9:[], 10:[], 11:[], 12:[], current:[]}
 
 export function DataSorting(){
 
