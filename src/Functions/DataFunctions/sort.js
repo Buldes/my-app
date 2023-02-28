@@ -10,8 +10,8 @@ export function sortDataByDate(){
         if (a.date.month < b.date.month) return -1;
         if (a.date.month > b.date.month) return 1;
         // Wenn die Jahre und Monate gleich sind, vergleiche Tag
-        if (a.date.day < b.date.day) return -1;
-        if (a.date.day > b.date.day) return 1;
+        if (parseInt(a.date.day) < parseInt(b.date.day)) return -1;
+        if (parseInt(a.date.day) > parseInt(b.date.day)) return 1;
         // Wenn alle gleich sind, bleibt die Reihenfolge unverändert
         return 0;
       })
@@ -20,8 +20,8 @@ export function sortDataByDate(){
 
 export function sortDataByAmout(){
     exampleData.sort(function(a, b){
-        if (a.amount < b.amount) return -1
-        if (a.amount > b.amount) return 1
+        if (parseFloat(a.amount) < parseFloat(b.amount)) return -1
+        if (parseFloat(a.amount) > parseFloat(b.amount)) return 1
         return 0
     })
     UpdateCIL()
