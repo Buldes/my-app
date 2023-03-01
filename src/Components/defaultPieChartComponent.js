@@ -5,7 +5,7 @@ import { MonthlyPieChart } from "../Charts/monthlyPieChart";
 
 export function PieChartComponent(props){
     const {bgColor=bgColor2e, lableBGColor=bgColor5e, piChartSize="300px", lableX="20%", lableY="10px", divWidth=500, divHeight=350,
-           divBorderRadius="25px", data=[{x: "Ausgaben", y: parseFloat(props.cost) + 1}, {x: "Einkommen", y: parseFloat(props.incomm) + 1}],
+           divBorderRadius="25px", data=[{x: "Ausgaben", y: parseFloat(props.cost) + 0.001}, {x: "Einkommen", y: parseFloat(props.incomm) + 0.001}],
             piChartColors=[bgColorR2, bgColorGreen]}  = props
 
     return (
