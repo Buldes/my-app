@@ -11,10 +11,12 @@ import { CILAddBar } from './Components/CILaddKomponent';
 import { CILSortBar } from './Components/CILSortComponent';
 import { GenerateData } from './Functions/DataFunctions/generateData';
 import { exampleData } from './Data/list';
-import { UpdateLables } from './Functions/UpdateLables';
+import { UpdateLables } from './Functions/UpdateElements';
+import { CalculateMonthAvarge } from './Functions/Analyse/calculateMonth';
 
 function App() {
   useEffect(() => { document.title = `Kontostand`; });
+  CalculateMonthAvarge()
 
   return (
     <div className='App'>
@@ -25,14 +27,10 @@ function App() {
 
         <SmallInfoComponent cost={monthCost} avarge={monthCostAvarge}/>
 
-        <PieChartComponent cost={monthCost} incomm={monthIncomm} top="-340px" left="10%"/>
+        <PieChartComponent cost={parseFloat(monthCost)} incomm={monthIncomm} top="-340px" left="10%"/>
 
      </div>
-     <button onClick={GenerateData}>Generate New Random Data</button>
-     <button onClick={UpdateLables}>Update Lable</button>
-     <button onClick={setMonthCost(20)}>Test</button>
-     <input onChange={(e) => setMonthCost(e.target.value)}/>
-
+      <button onClick={GenerateData}>GenerateData</button>
       <div className='down-arear' style={downArearStyle}>
           <CILComponent addBar={CILAddBar()} generateList={GenerateCIL()} sortBar={CILSortBar()}/> 
       </div>
