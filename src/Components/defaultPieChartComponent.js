@@ -1,9 +1,11 @@
 import React from "react";
 import { bgColor2e, bgColor5e , bgColorR2, bgColorGreen } from "../Styles/backGroundColor";
 import { Headline } from "../Lable/HeadLines";
-import { MonthlyPieChart } from "../Charts/monthlyPieChart";
+import { MonthlyPieChart } from "../Charts/PieCharts/monthlyPieChart";
+import { exampleData } from "../Data/list";
 
 export function PieChartComponent(props){
+
     const {bgColor=bgColor2e, lableBGColor=bgColor5e, piChartSize="300px", lableX="20%", lableY="10px", divWidth=500, divHeight=350,
            divBorderRadius="25px", data=[{x: "Ausgaben", y: parseFloat(props.cost) + 0.001}, {x: "Einkommen", y: parseFloat(props.incomm) + 0.001}],
             piChartColors=[bgColorR2, bgColorGreen]}  = props

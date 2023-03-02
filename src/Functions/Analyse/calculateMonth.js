@@ -1,5 +1,5 @@
 import { IncomCostMonthlyGenerate, incomCostMonthly } from "./IncomCostPerMonth";
-import { setMonthCost, setMonthCostAverage } from "../../Data/float";
+import { setMonthCost, setMonthCostAverage, setMonthIncomm } from "../../Data/float";
 
 export function CalculateMonthAvarge(){
     IncomCostMonthlyGenerate()
@@ -12,4 +12,5 @@ export function CalculateMonthAvarge(){
 
     setMonthCostAverage((totalCost / 12).toFixed(2))
     setMonthCost(incomCostMonthly.current[1].amount.toFixed(2))
+    setMonthIncomm(incomCostMonthly.current[0].amount.toFixed(2))
 }

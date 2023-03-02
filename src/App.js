@@ -5,13 +5,12 @@ import { PieChartComponent } from './Components/defaultPieChartComponent';
 import { SmallInfoComponent } from './Components/smallInfoComponent';
 import { CILComponent } from './Components/cost-incommListComponent';
 import { downArearStyle, upArearStyle } from './Styles/arearStyles';
-import { monthCostAvarge, monthCost, monthIncomm, setMonthCost } from './Data/float';
+import { monthCostAvarge, monthCost, monthIncomm } from './Data/float';
 import { GenerateCIL } from './Functions/generateCILItem';
 import { CILAddBar } from './Components/CILaddKomponent';
 import { CILSortBar } from './Components/CILSortComponent';
 import { GenerateData } from './Functions/DataFunctions/generateData';
 import { exampleData } from './Data/list';
-import { UpdateLables } from './Functions/UpdateElements';
 import { CalculateMonthAvarge } from './Functions/Analyse/calculateMonth';
 
 function App() {

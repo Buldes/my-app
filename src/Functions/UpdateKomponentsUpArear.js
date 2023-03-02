@@ -3,7 +3,18 @@ import { exampleData } from "../Data/list";
 import { CalculateMonthAvarge } from "./Analyse/calculateMonth";
 
 export function BankBalanceLableUdate(){
-    document.getElementById("BankBalance").textContent = parseFloat(exampleData[exampleData.length-1].bankBalance).toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2, style: 'currency', currency: 'EUR'})
+    const dataCopie = exampleData
+
+    dataCopie.sort(function(a, b){
+    if (a.date.year < b.date.year) return -1;
+    if (a.date.year > b.date.year) return 1;
+    if (a.date.month < b.date.month) return -1;
+    if (a.date.month > b.date.month) return 1;
+    if (parseInt(a.date.day) < parseInt(b.date.day)) return -1;
+    if (parseInt(a.date.day) > parseInt(b.date.day)) return 1;
+    return 0
+    })
+    document.getElementById("BankBalance").textContent = parseFloat(dataCopie[dataCopie.length-1].bankBalance).toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2, style: 'currency', currency: 'EUR'})
 }
 
 export function SmallInfoUpdate(){

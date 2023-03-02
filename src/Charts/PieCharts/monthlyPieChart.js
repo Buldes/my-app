@@ -1,5 +1,5 @@
 import React from "react";
-import { bgColorGreen, bgColorR2 } from "../Styles/backGroundColor";
+import { bgColorGreen, bgColorR2 } from "../../Styles/backGroundColor";
 import { DefaultPieChart } from "./defaultPieChart";
 
 export function MonthlyPieChart(props){
