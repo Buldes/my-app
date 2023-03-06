@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Buldes/my-app/static/css/main.3cc0b584.css",
-    "main.js": "/Buldes/my-app/static/js/main.25cd3a3a.js",
+    "main.js": "/Buldes/my-app/static/js/main.0eb61389.js",
     "index.html": "/Buldes/my-app/index.html",
     "main.3cc0b584.css.map": "/Buldes/my-app/static/css/main.3cc0b584.css.map",
-    "main.25cd3a3a.js.map": "/Buldes/my-app/static/js/main.25cd3a3a.js.map"
+    "main.0eb61389.js.map": "/Buldes/my-app/static/js/main.0eb61389.js.map"
   },
   "entrypoints": [
     "static/css/main.3cc0b584.css",
-    "static/js/main.25cd3a3a.js"
+    "static/js/main.0eb61389.js"
   ]
 }
